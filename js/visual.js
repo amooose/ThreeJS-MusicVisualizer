@@ -72,7 +72,7 @@ function onWindowResize() {
 // Wait until user clicks button (Chrome requires this due to not being
 // able to create AudioContext() until user interacts with page)
 // Parts of audio init code from http://35.245.74.165/music-visualiser-with-three-js/
-document.querySelector('button').addEventListener('click', function() {
+document.querySelector('.playbtn').addEventListener('click', function() {
     // Audio init ////
     var audio = new Audio();
     audio.src = 'ChillDay_comp.mp3';
@@ -151,4 +151,4 @@ document.querySelector('button').addEventListener('click', function() {
 });
 
 // JQuery - hide button upon click
-$('button').click(function(){$(this).hide();});
+$('.playbtn').click(function(){$(this).hide();});
