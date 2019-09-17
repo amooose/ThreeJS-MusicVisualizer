@@ -1,4 +1,4 @@
-// Basic 3D visualizer by https://github.com/DylanO17
+// Basic 3D visualizer by https://github.com/amooose
 
 //Random list of colors
 var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
@@ -57,8 +57,9 @@ function getRandom() {
 var geometry = new THREE.OctahedronGeometry(1,0);
 var material = new THREE.MeshPhongMaterial( { color: 0x00ff00} );
 var shape = new THREE.Mesh( geometry, material );
-///////////////////
 sceneShape.add(shape);
+///////////////////
+
 
 // Resize scene/renderer based on window size.
 window.addEventListener('resize', onWindowResize, false);
@@ -102,8 +103,11 @@ document.querySelector('button').addEventListener('click', function() {
     
     function changeOpacity(opLvl){
         var colorRand = colorArray[Math.floor(Math.random()*colorArray.length)];
-        var material3 = new THREE.MeshPhongMaterial( {transparent: true, opacity: opLvl, color: prevColor, specular: 0xffffff, shininess: 50} );
-        shape.material = material3;
+        
+        var materialNew = new THREE.MeshPhongMaterial( {transparent: true, opacity: opLvl,
+        color: prevColor, specular: 0xffffff, shininess: 50} );
+        
+        shape.material = materialNew;
         shape.material.needsUpdate = true;
     }
     
@@ -123,6 +127,8 @@ document.querySelector('button').addEventListener('click', function() {
         shape.scale.y = dataArray[loc]*.02;
         shape.scale.z = dataArray[loc+2]*.02;
         //console.log("scale:"+(((shape.scale.z)/3)-(0.22)));
+        
+        //opacity optional, looks better without.
         //changeOpacity((((shape.scale.z)/3)-(0.22)));
         // z axis is chosen for treble. When the z scale goes 
         // grows to its largest, change the color of the shape.
